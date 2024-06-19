@@ -1,23 +1,4 @@
 import { Redis } from "ioredis";
 
-export const redisClient = new Redis({
-  host: process.env.REDIS_ENDPOINT,
-  port: Number(process.env.REDIS_PORT),
-  password: process.env.REDIS_PASSWORD,
-});
+export const redisClient = new Redis("redis://default:AcENAAIncDFiOTA0N2I5ZDVkNWI0MDEwOGJlZGJjYzZkMjI3YTUzZnAxNDk0MjE@aware-catfish-49421.upstash.io:6379");
 
-redisClient.on('connect', () => {
-  console.log('Connected to Redis');
-});
-
-redisClient.on('reconnecting', () => {
-  console.log(`Reconnecting to Redis ...`);
-});
-
-redisClient.on('end', () => {
-  console.log('Redis connection closed');
-});
-
-redisClient.on('error', (err) => {
-  console.error('Redis error', err);
-});
